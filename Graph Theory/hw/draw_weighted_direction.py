@@ -27,7 +27,7 @@ for i in range(adj_matrix.shape[0]):
 
 # 绘制图形
 pos = nx.circular_layout(graph)  # 定义节点布局
-nx.draw_networkx_nodes(graph, pos, node_color='white', node_size=500)
+nx.draw_networkx_nodes(graph, pos, node_color='red', node_size=500)
 nx.draw_networkx_edges(graph, pos)
 labels = nx.get_edge_attributes(graph, 'weight')
 nx.draw_networkx_edge_labels(graph, pos, edge_labels=labels)
