@@ -36,8 +36,8 @@ a = 7.0
 b = 158.0
 
 # 计算积分面积
-integral1, error1 = quad(cs1, a, b)
-integral2, error2 = quad(cs2, a, b)
+integral1, error1 = quad(cs1, a, b, limit = 100)
+integral2, error2 = quad(cs2, a, b, limit = 100)
 
 # 输出积分面积
-print('The integral area is:', integral2 - integral1)
+print('The integral area is:', (integral2 - integral1) * (18 / 40))
