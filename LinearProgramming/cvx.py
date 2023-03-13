@@ -8,6 +8,6 @@ x = cp.Variable((6,8))
 obj = cp.Minimize(cp.sum(cp.multiply(c,x))) # cp.mutiply为逐个元素乘法
 con = [cp.sum(x, axis = 1, keepdims = True) <= e, cp.sum(x, axis = 0, keepdims = True) == d, x >= 0]
 prob = cp.Problem(obj, con) 
-# axis = 0 <=> sum of row
-# axis = 1 <=> sum of col
+# axis = 0 <=> sum of row <=> Xij = 1 for j from 1 to 5
+# axis = 1 <=> sum of col <=> Xij = 1 for i from 1 to 5
 prob.solve(solver = 'GLPK_MI', verbose = True)
