@@ -3,11 +3,11 @@ import numpy as np
 c = np.array([[1, 0, 0, 0, 1, 0, 1, 0],
              [1, 1, 0, 0, 1, 0, 0, 1],
              [1, 0, 1, 0, 1, 0, 0, 0],
-             [0, 1, 1, 1, 0, 0, 0, 1],
-             [0, 0, 0, 1, 1, 0, 0, 0],
-             [0, 0, 0, 0, 0, 1, 0, 1]])
+             [0, 1, 0, 1, 0, 0, 0, 1],
+             [0, 0, 1, 0, 0, 1, 0, 0],
+             [0, 0, 0, 1, 0, 1, 0, 1]])
 x = cp.Variable((6, 8), integer = True)
-obj = cp.Minimize(cp.sum((x)))
+obj = cp.Minimize(cp.sum(x[0,:]) + cp.sum(x[1,:]) + cp.sum(x[2,:]) + cp.sum(x[3,:]) + cp.sum(x[4,:]) + cp.sum(x[5,:]))
 con = [x >= 0,
        x <= 1,
        cp.sum(x[:, 0]) >= 1,
@@ -18,7 +18,12 @@ con = [x >= 0,
        cp.sum(x[:, 5]) >= 1,
        cp.sum(x[:, 6]) >= 1,
        cp.sum(x[:, 7]) >= 1,
-       
+       cp.sum(x[0, :]) <= 1,
+       cp.sum(x[1, :]) <= 1,
+       cp.sum(x[2, :]) <= 1,
+       cp.sum(x[3, :]) <= 1,
+       cp.sum(x[4, :]) <= 1,
+       cp.sum(x[5, :]) <= 1,
        ]
 prob = cp.Problem(obj, con)
 prob.solve()
