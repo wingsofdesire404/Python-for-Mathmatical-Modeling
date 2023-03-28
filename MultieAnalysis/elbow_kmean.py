@@ -21,12 +21,11 @@ plt.xlabel('Number of clusters')
 plt.ylabel('WCSS')
 plt.show()
 
+k = 3
 # 使用k均值聚类将数据集分为3类
-kmeans = KMeans(n_clusters=3, init='k-means++', max_iter=300, n_init=10, random_state=0)
+kmeans = KMeans(n_clusters=k, init='k-means++', max_iter=300, n_init=10, random_state=0)
 y_kmeans = kmeans.fit_predict(X)
 
-# 绘制聚类结果
-k = 3
 # 可视化聚类结果
 colors = ['red', 'blue', 'green', 'black', 'cyan', 'magenta'] # 适当拓展颜色以防k过大而用光颜色集
 for i in range(k):
